@@ -1,0 +1,125 @@
+# test Chi-2 de McNemar et test exact de Fisher
+
+# définition de la fonction factioriel
+
+def fact(n):
+    k = 1
+    for i in range (1,n+1):
+        k *= i
+    return k
+    
+# insertion des données
+
+a = int(input("Case 1 :"))
+b = int(input("Case 2 :"))
+c = int(input("Case 3 :"))
+d = int(input("Case 4 :"))
+
+# ddl = int(input("Insérez les degrés de libertés :"))
+alpha = float(input("Insérez le risque alpha :"))
+
+n1 = a+b
+n2 = c+d
+n3 = a+c
+n4 = b+d
+ntot = a+b+c+d
+
+# degrés de liberté et risque alpha, défini à 1 puisque tableau 2x2 en attendant autres chi-2
+
+ddl = 1
+
+if ddl==1:
+    if alpha == 0.01:
+        p = 6.63
+    elif alpha == 0.05:
+        p = 3.84
+    elif alpha == 0.1:
+        p = 2.71
+
+# elif ddl!=1:
+    # print("ddl =/= 1")
+
+question = input("Quel test statistique voulez-vous choisir? Chi-2 McNemar (1), Chi-2 X (2) ou Fisher bilatéral (3) ?")
+
+# condc2mr = condition chi-2 mcnemar
+
+if question=="1":
+    condc2mr = ((b+c)/2)
+    if condc2mr >= 5:
+        print("Puisque (b+c)/2 =",condc2mr,"> 5 On emploie le Chi-2 de McNemar")
+        c2mr = ((b-c)**2)/(b+c)
+    
+        if c2mr > p:
+            print("Le Chi-2 observé =",c2mr,">",p,"donc : on peut rejeter H0")
+        elif c2mr <= p:
+            print("Le Chi-2 observé =",c2mr,"<",p,"donc : on ne rejete pas H0")
+        
+    elif condc2mr < 5:
+        print("Puisque (b+c)/2 =",condc2mr,"< 5 : On ne peut employer le test Chi-2 de McNemar")
+
+elif question=="2":
+    print("not coded yet!")
+
+elif question=="3":
+
+    # pem = plus petit effectif marginal
+    # nrpt = nombre de répartitions possible du tableau
+    
+    list1 = [a, b, c, d]
+    list1.sort()
+    # print(list1)
+
+    # calcul des effectifs théoriques
+
+    eat = (n1*n3)/ntot
+    ebt = (n1*n4)/ntot
+    ect = (n2*n3)/ntot
+    edt = (n2*n4)/ntot
+    
+    # conditions du test exact de Fisher
+    
+    if eat < 5 and ebt < 5 and ect < 5 and edt < 5:
+        print("Puisque tous les effectifs théoriques",eat,ebt,ect,edt,"sont tous inférieurs à 5, on peut utiliser le test exact de Fiscer")
+        print("La p-value est : p =", pvtf)
+        
+    else:
+        print("Le test de Fisher n'est pas le plus optimisé pour ce tableau car au moins un des effectifs théoriques",eat,ebt,ect,edt,"est supérieur ou égal à 5")
+    
+    pem = (sorted(set(list1))[1]) + min(a, b, c, d)
+    nrpt = pem+1
+    print("Le nombre de répartitions possible du tableau est :", nrpt)
+    
+    # pge = plus grand élément : pge1 < pge2 < pge3 < pge4
+    
+    pge4 = (sorted(set(list1))[3])
+    pge3 = (sorted(set(list1))[2])
+    pge2 = (sorted(set(list1))[1])
+    pge1 = min(a, b, c, d)
+
+    # calcul de chaque p-valeur de chaque tableau possible et de la p-valeur finale
+
+    ef0 = (fact(n1)*fact(n2)*fact(n3)*fact(n4))/(fact(a)*fact(b)*fact(c)*fact(d)*fact(ntot))
+    print("La p-value du tableau initial est : P ( D =",min(a, b, c, d),") =", ef0)
+
+    # efl = exact fisher list
+    # efs = exact fisher sum
+    
+    efl = []
+    
+    for k in range (0,nrpt):
+        ef = (fact(n1)*fact(n2)*fact(n3)*fact(n4))/(fact(k)*fact(pge2+min(a, b, c, d)-k)*fact(pge3-min(a, b, c, d)+k)*fact(pge4+min(a, b, c, d)-k)*fact(ntot))
+        if ef <= ef0:
+            efl.append(ef)
+        print("p-value au rang",k,": P ( D =",k,") =",ef)
+
+    # print(efl)
+    efs = sum(efl)
+    print("La p-value du test exact de Fisher bilatéral est : p =", efs)
+
+    # conditions H0 et H1
+    
+    if efs <= alpha:
+        print("La p-value du test exact de Fisher bilatéral",efs,"<",alpha,", on peut rejeter H0 au risque",alpha)
+        
+    elif efs > alpha:
+        print("La p-value du test exact de Fisher bilatéral",efs,">",alpha,", on ne peut pas rejeter H0 au risque",alpha)
