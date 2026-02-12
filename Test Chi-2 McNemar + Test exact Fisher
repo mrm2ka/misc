@@ -90,7 +90,7 @@ elif question=="3":
     
     # pge = plus grand élément : pge1 < pge2 < pge3 < pge4
     
-    pge4 = (sorted(set(list1))[3])
+    pge4 = max(a, b, c, d)
     pge3 = (sorted(set(list1))[2])
     pge2 = (sorted(set(list1))[1])
     pge1 = min(a, b, c, d)
@@ -106,7 +106,7 @@ elif question=="3":
     efl = []
     
     for k in range (0,nrpt):
-        ef = (fact(n1)*fact(n2)*fact(n3)*fact(n4))/(fact(k)*fact(pge2+min(a, b, c, d)-k)*fact(pge3-min(a, b, c, d)+k)*fact(pge4+min(a, b, c, d)-k)*fact(ntot))
+        ef = (fact(n1)*fact(n2)*fact(n3)*fact(n4))/(fact(k)*fact(pge2+min(a, b, c, d)-k)*fact(pge3-min(a, b, c, d)+k)*fact(max(a, b, c, d)+min(a, b, c, d)-k)*fact(ntot))
         if ef <= ef0:
             efl.append(ef)
         print("p-value au rang",k,": P ( D =",k,") =",ef)
