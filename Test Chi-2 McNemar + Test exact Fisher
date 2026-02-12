@@ -119,7 +119,7 @@ elif question=="3":
     # conditions H0 et H1
     
     if efs <= alpha:
-        print("La p-value du test exact de Fisher bilatéral",efs,"<",alpha,", on peut rejeter H0 au risque",alpha)
+        print("La p-value du test exact de Fisher bilatéral",round(efs,3),"<",alpha,", on peut rejeter H0 au risque",alpha)
         
     elif efs > alpha:
-        print("La p-value du test exact de Fisher bilatéral",efs,">",alpha,", on ne peut pas rejeter H0 au risque",alpha)
+        print("La p-value du test exact de Fisher bilatéral",round(efs,3),">",alpha,", on ne peut pas rejeter H0 au risque",alpha)
