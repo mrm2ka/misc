@@ -80,7 +80,6 @@ elif question=="3":
     
     if eat < 5 and ebt < 5 and ect < 5 and edt < 5:
         print("Puisque tous les effectifs théoriques",eat,ebt,ect,edt,"sont tous inférieurs à 5, on peut utiliser le test exact de Fiscer")
-        print("La p-value est : p =", pvtf)
         
     else:
         print("Le test de Fisher n'est pas le plus optimisé pour ce tableau car au moins un des effectifs théoriques",eat,ebt,ect,edt,"est supérieur ou égal à 5")
