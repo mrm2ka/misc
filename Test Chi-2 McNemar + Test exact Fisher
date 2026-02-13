@@ -93,7 +93,7 @@ elif question=="3":
     # pge = plus grand élément : pge1 < pge2 < pge3 < pge4
 
     dupc = len(list3) - len(set(list3))
-    print("Il y a :",dupc,"duplications")
+    # print("Il y a :",dupc,"duplications")
     
     if dupc>=2:
         x = len(sorted(set(list1)))-1
