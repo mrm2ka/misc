@@ -69,7 +69,7 @@ elif question=="3":
     list1.sort()
     # print(list1)
 
-    # calcul des effectifs théoriques
+    # calcul des effectifs théoriques : ext = effectif case x théorique
 
     eat = (n1*n3)/ntot
     ebt = (n1*n4)/ntot
@@ -85,7 +85,7 @@ elif question=="3":
         print("ATTENTION : Le test de Fisher n'est pas optimisé pour ce tableau car tous les effectifs théoriques",eat,ebt,ect,edt,"sont supérieurs ou égal à 5!")
         input("ATTENTION : D'autres tests Chi-2 sont plus adaptés!")
     
-    pem = (sorted(set(list1))[1]) + min(a, b, c, d)
+    pem = min(n1, n2, n3, n4)
     nrpt = pem+1
     print("Le nombre de répartitions possible du tableau est :", nrpt)
     
