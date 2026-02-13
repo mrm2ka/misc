@@ -1,4 +1,4 @@
-def mcnr(a,b,c,d):
+def c2_mcn(a,b,c,d):
 
     alpha = float(input("Insérez risque :"))
 
@@ -22,3 +22,5 @@ def mcnr(a,b,c,d):
             
     elif condc2mr < 5:
             print("Puisque (b+c)/2 =",condc2mr,"< 5 : On ne peut pas employer le test Chi-2 de McNemar")
+
+    return c2mr
