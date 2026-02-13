@@ -1,0 +1,44 @@
+# Moyenne, variance, variance estimée, écart-type, ecart-type estimé, somme totale, minimum, maximum, médiane
+
+def common(*v):
+    
+    mref = sum(v)/len(v)
+    
+    def f(x):
+        return((x - mref)**2)
+    
+    d = list(map(f, v))
+    ds = sum(d)
+    
+    var = (1/len(v))*ds
+    evar = (1/(len(v)-1))*ds
+    
+    stand = var**0.5
+    estand = evar**0.5
+
+    i = int((len(v)))
+    if len(v) %2 == 0:
+        med = ((sorted(set(v))[(len(v)//2)])+(sorted(set(v))[(len(v)//2-1)]))/2
+        
+    else:
+        med = (sorted(set(v))[(i//2)])
+
+    # arr = int(input("Arrondissement à 10^(-?) :"))
+    arr = 4
+    
+    print("ATTENTION : Arrondissement à 10 ^ ( -",arr,") unités (modifiable dans le code avec une fenêtre d'entrée)")
+    
+    print("Moyenne est : moy =", mref)
+    
+    print("Variance : var =", round(var, arr))
+    print("Variance estimée : e_var =", round(evar, arr))
+    
+    print("Ecart-type : stand =", round(stand, arr))
+    print("Ecart-type estimée : e_stand =", round(estand, arr))
+
+    print("Somme total des éléments : sum =",sum(v))
+    # print("Somme total des éléments au carré : sum^2 =",sum(v)**2)
+    print("Min.: min =", min(*v))
+    print("Max. : max =", max(*v))
+
+    print("Médiane : med =", med)
