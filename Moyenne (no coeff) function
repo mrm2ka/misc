@@ -1,0 +1,4 @@
+def moy(*v):
+    print(v)
+    m = sum(v)/len(v)
+    return m
