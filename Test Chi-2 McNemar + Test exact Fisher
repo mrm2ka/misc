@@ -78,11 +78,12 @@ elif question=="3":
     
     # conditions du test exact de Fisher
     
-    if eat < 5 and ebt < 5 and ect < 5 and edt < 5:
-        print("Puisque tous les effectifs théoriques",eat,ebt,ect,edt,"sont tous inférieurs à 5, on peut utiliser le test exact de Fiscer")
+    if eat < 5 or ebt < 5 or ect < 5 or edt < 5:
+        print("Puisque au moins un des effectifs théoriques",eat,ebt,ect,edt,"est inférieur à 5, on peut utiliser le test exact de Fisher")
         
     else:
-        print("Le test de Fisher n'est pas le plus optimisé pour ce tableau car au moins un des effectifs théoriques",eat,ebt,ect,edt,"est supérieur ou égal à 5")
+        print("ATTENTION : Le test de Fisher n'est pas optimisé pour ce tableau car tous les effectifs théoriques",eat,ebt,ect,edt,"sont supérieurs ou égal à 5!")
+        input("ATTENTION : D'autres tests Chi-2 sont plus adaptés!")
     
     pem = (sorted(set(list1))[1]) + min(a, b, c, d)
     nrpt = pem+1
@@ -121,4 +122,4 @@ elif question=="3":
         print("La p-value du test exact de Fisher bilatéral",round(efs,3),"<",alpha,", on peut rejeter H0 au risque",alpha)
         
     elif efs > alpha:
-        print("La p-value du test exact de Fisher bilatéral",round(efs,3),">",alpha,", on ne peut pas rejeter H0 au risque",alpha)
+        print("La p-value du test exact de Fisher bilatéral",round(efs,6),">",alpha,", on ne peut pas rejeter H0 au risque",alpha)
