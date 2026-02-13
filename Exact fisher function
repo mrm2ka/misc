@@ -43,4 +43,7 @@ def bi_efisher(a, b, c, d):
     efs = sum(efl)
     # print("La p-value du test exact de Fisher bilatéral est : p =", efs)
 
+    OR = (a*d)/(b*c)
+    print("L'Odds Ration est de : OR =",OR)
+
     return(efs)
