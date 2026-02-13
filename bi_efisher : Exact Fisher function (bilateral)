@@ -43,7 +43,12 @@ def bi_efisher(a, b, c, d):
     efs = sum(efl)
     # print("La p-value du test exact de Fisher bilatéral est : p =", efs)
 
-    OR = (a*d)/(b*c)
-    print("L'Odds Ration est de : OR =",OR)
+    if (b*c)==0:
+        print("Division impossible, OR impossible")
+    else:
+        OR = (a*d)/(b*c)
+        print("L'Odds Ration est de : OR =",OR)
+
+    print("p-value du test exact de Fisher : p =", round(efs,6))
 
     return efs
