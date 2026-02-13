@@ -1,0 +1,12 @@
+def evar(*v):
+        
+    mref = sum(v)/len(v)
+    
+    def f(x):
+        return((x - mref)**2)
+    
+    d = list(map(f, v))
+    ds = sum(d)
+    evar = (1/(len(v)-1))*ds
+    
+    return evar
