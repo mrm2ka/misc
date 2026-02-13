@@ -46,4 +46,4 @@ def bi_efisher(a, b, c, d):
     OR = (a*d)/(b*c)
     print("L'Odds Ration est de : OR =",OR)
 
-    return(efs)
+    return efs
