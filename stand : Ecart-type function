@@ -1,0 +1,13 @@
+def stand(*v):
+        
+    mref = sum(v)/len(v)
+    
+    def f(x):
+        return((x - mref)**2)
+    
+    d = list(map(f, v))
+    ds = sum(d)
+    var = (1/(len(v)))*ds
+    stand = var**0.5
+    
+    return stand
