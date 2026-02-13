@@ -1,0 +1,36 @@
+def moy_cref(*x):
+
+    mref2 = float(input("Insérez la moyenne de référence :"))
+            
+    # print(len(x))
+    print("Effectif total : eff =", len(x))
+    m = float(sum(x)/len(x))
+    print(m)
+    ddl = len(x) - 1
+    print("Degrés de libertés : ddl =", ddl)
+    
+    def f(x):
+        return((x - m)**2)
+    
+    d = list(map(f, x))
+    ds = sum(d)
+    
+    var = (1/len(x))*ds
+    evar = (1/(len(x)-1))*ds
+    
+    sd = var**0.5
+    esd = evar**0.5
+    print(esd)
+
+    st_obs = (m - mref2)/(((esd**2)/len(x))**0.5)
+
+    if len(x)>=30:
+        
+        print("Puisque n =", len(x),"est supérieur ou égal à 30, on emploie un test Z (de comparaison de moyenne observée à une moyenne de référence). Ici z_obs =", st_obs)
+        
+    elif len(x)<30:
+        print("Puisque n =", len(x),"est inférieur à 30, on emploie un test t (de comparaison de moyenne observée à une moyenne de référence). Ici t_obs =", st_obs)
+
+    print("ATTENTION : Veuillez prendre référence sur les tableaux des tests Z et t respectifs selon le test choisi afin de comparer la statistique de test observée à la p-valeur!")
+
+    return st_obs
