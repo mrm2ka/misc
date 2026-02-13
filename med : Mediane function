@@ -1,0 +1,9 @@
+def med(*v):
+    u = int((len(v)))
+    if len(v) %2 == 0:
+        med = ((sorted(set(v))[(len(v)//2)])+(sorted(set(v))[(len(v)//2-1)]))/2
+        
+    else:
+        med = (sorted(set(v))[(u//2)])
+
+    return med
