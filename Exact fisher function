@@ -44,5 +44,3 @@ def bi_efisher(a, b, c, d):
     # print("La p-value du test exact de Fisher bilatéral est : p =", efs)
 
     return(efs)
-
-print(bi_efisher(11, 13, 4, 2))
