@@ -67,6 +67,7 @@ elif question=="3":
     
     list1 = [a, b, c, d]
     list1.sort()
+    list3 = sorted(list1)
     # print(list1)
 
     # calcul des effectifs théoriques : ext = effectif case x théorique
@@ -90,11 +91,24 @@ elif question=="3":
     print("Le nombre de répartitions possible du tableau est :", nrpt)
     
     # pge = plus grand élément : pge1 < pge2 < pge3 < pge4
+
+    dupc = len(list3) - len(set(list3))
+    print("Il y a :",dupc,"duplications")
     
-    pge4 = max(a, b, c, d)
-    pge3 = (sorted(set(list1))[2])
-    pge2 = (sorted(set(list1))[1])
-    pge1 = min(a, b, c, d)
+    if dupc>=2:
+        x = len(sorted(set(list1)))-1
+        y = len(sorted(set(list1)))-2
+
+        pge4 = max(a, b, c, d)
+        pge3 = (sorted(set(list1))[x])
+        pge2 = (sorted(set(list1))[y])
+        pge1 = min(a, b, c, d)
+
+    else:
+        pge4 = max(a, b, c, d)
+        pge3 = (sorted(set(list1))[2])
+        pge2 = (sorted(set(list1))[1])
+        pge1 = min(a, b, c, d)
 
     # calcul de chaque p-valeur de chaque tableau possible et de la p-valeur finale
 
@@ -123,3 +137,6 @@ elif question=="3":
         
     elif efs > alpha:
         print("La p-value du test exact de Fisher bilatéral",round(efs,6),">",alpha,", on ne peut pas rejeter H0 au risque",alpha)
+
+    OR = (a*d)/(b*c)
+    print("L'Odds Ration est de : OR =",OR)
