@@ -1,0 +1,35 @@
+def moy_c2m(a, b):
+
+    m_a = sum(a)/len(a)
+    print(m_a)
+    m_b = sum(b)/len(b)
+    print(m_b)
+
+    ddl = len(a)+len(b)-2
+    print("Il y a : ddl =",ddl,"degrés de liberté")
+    
+    def f_a(x):
+        return((x - m_a)**2)
+
+    def f_b(x):
+        return((x - m_b)**2)
+    
+    d_a = list(map(f_a, a))
+    d_b = list(map(f_b, b))
+        
+    ds_a = sum(d_a)
+    ds_b = sum(d_b)
+        
+    evar_a = (1/(len(a)-1))*ds_a 
+    evar_b = (1/(len(b)-1))*ds_b
+
+    if len(a)>=30 and len(b)>=30:
+        print("Puisque l'effectif total des deux bases de données ( na =",len(a),"; nb =",len(b),") est au moins supérieur ou égale à 30, on emploie le test Z")
+        moy_c2m = (m_a - m_b)/((((evar_a)/(len(a))+(evar_b)/(len(b))))**0.5)
+
+    else:
+        print("Puisque l'effectif total d'au moins une des deux bases de données ( na =",len(a),"; nb =",len(b),") est inférieur à 30, on emploie un test t de Student")
+        o = ((evar_a*(len(a) - 1)) + (evar_b*(len(b) - 1)))/(len(a) + len(b) - 2)
+        moy_c2m = (m_a - m_b)/((o*((1/len(a))+(len(b)))**0.5))
+        
+    return moy_c2m
