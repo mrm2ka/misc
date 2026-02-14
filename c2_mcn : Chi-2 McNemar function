@@ -15,9 +15,9 @@ def c2_mcn(a,b,c,d):
         print("Puisque (b+c)/2 =",((b+c)/2),"> 5 On emploie le Chi-2 de McNemar")
         
         if c2_mcn > p:
-            print("Le Chi-2 observé =",c2_mcn,">",p," : on peut rejeter H0")
+            print("Le Chi-2 observé =",round(c2_mcn, 3),">",p," : on peut rejeter H0")
         elif c2_mcn <= p:
-            print("Le Chi-2 observé =",c2_mcn,"<",p,": on ne peut pas rejetter pas H0")
+            print("Le Chi-2 observé =",round(c2_mcn, 3),"<",p,": on ne peut pas rejetter pas H0")
             
     else:
         print("Puisque (b+c)/2 =",((b+c)/2),"< 5 : On ne peut pas employer le test Chi-2 de McNemar")
