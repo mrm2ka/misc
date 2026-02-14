@@ -8,19 +8,18 @@ def c2_mcn(a,b,c,d):
         p = 3.84
     elif alpha == 0.1:
         p = 2.71
-    
-    condc2mr = ((b+c)/2)
-    c2mr = float(((b-c)**2)/(b+c))
-    
-    if condc2mr >= 5:
-        print("Puisque (b+c)/2 =",condc2mr,"> 5 On emploie le Chi-2 de McNemar")
-        
-        if c2mr > p:
-            print("Le Chi-2 observé =",c2mr,">",p,"donc : on peut rejeter H0")
-        elif c2mr <= p:
-            print("Le Chi-2 observé =",c2mr,"<",p,"donc : on ne rejette pas H0")
-            
-    elif condc2mr < 5:
-            print("Puisque (b+c)/2 =",condc2mr,"< 5 : On ne peut pas employer le test Chi-2 de McNemar")
 
-    return c2mr
+    c2_mcn = ((b-c)**2)/(b+c)
+    
+    if ((b+c)/2) >= 5:
+        print("Puisque (b+c)/2 =",((b+c)/2),"> 5 On emploie le Chi-2 de McNemar")
+        
+        if c2_mcn > p:
+            print("Le Chi-2 observé =",c2_mcn,">",p," : on peut rejeter H0")
+        elif c2_mcn <= p:
+            print("Le Chi-2 observé =",c2_mcn,"<",p,": on ne peut pas rejetter pas H0")
+            
+    else:
+        print("Puisque (b+c)/2 =",((b+c)/2),"< 5 : On ne peut pas employer le test Chi-2 de McNemar")
+
+    return c2_mcn
