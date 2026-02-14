@@ -1,9 +1,7 @@
 def moy_c2m(a, b):
 
     m_a = sum(a)/len(a)
-    print(m_a)
     m_b = sum(b)/len(b)
-    print(m_b)
 
     ddl = len(a)+len(b)-2
     print("Il y a : ddl =",ddl,"degrés de liberté")
@@ -32,4 +30,4 @@ def moy_c2m(a, b):
         o = ((evar_a*(len(a) - 1)) + (evar_b*(len(b) - 1)))/(len(a) + len(b) - 2)
         moy_c2m = (m_a - m_b)/((o*((1/len(a))+(len(b)))**0.5))
         
-    return moy_c2m
+    return round(moy_c2m,10)
