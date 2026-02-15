@@ -1,7 +1,8 @@
-def risk(a,b,c,d):
+def risk_abs(a,b,c,d):
     risk_a = a/(a+c)
     risk_b = b/(b+d)
     risk_diff = risk_a - risk_b
     print("Risque absolu A :", round(risk_a,4))
     print("Risque absolu B :", round(risk_b,4))
     print("Différence de risque :", round(risk_diff,4))
+    return risk_abs
