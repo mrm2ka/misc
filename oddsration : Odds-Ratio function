@@ -1,0 +1,4 @@
+def oddsratio(a,b,c,d):
+    oddsratio = (a*d)/(b*c)
+    print("Odds-Ratio :", round(oddsratio,4))
+    return oddsratio
