@@ -1,0 +1,8 @@
+def risk_ratio(a,b,c,d):
+    risk_a = a/(a+c)
+    risk_b = b/(b+d)
+    risk_ratio = risk_a/risk_b
+    print("Risque absolu A :", round(risk_a,4))
+    print("Risque absolu B :", round(risk_b,4))
+    print("Rapport de risque :", round(risk_ratio,4))
+    return risk_ratio
